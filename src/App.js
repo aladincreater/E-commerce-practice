@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Product from "./component/product/product";
+import CartContext from "./context/Cartcontext";
 
 function App() {
+  const [cart,setCart] = useState({title:"rihsi"});
+  console.log(cart);
+  const increaseQuantity = () =>{
+    setCart(cart);
+  }
+  const decreaseQuantity = (props) =>{
+    setCart(props.product);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartContext.Provider value={{cart,increaseQuantity,decreaseQuantity}}>
+      <div className="App">
+        <Product />
+      </div>
+    </CartContext.Provider>
   );
 }
 
