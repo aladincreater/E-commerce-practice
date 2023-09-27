@@ -1,4 +1,4 @@
-import ProductList from "../productCard/productlist";
+import ProductList from "../productCard/ProductCard";
 import { useEffect, useState } from "react";
 // const product = [
 //     {
@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 //     }
 //   ];
 
-const Product = ({cart}) => {
+const Product = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState("");
@@ -58,8 +58,7 @@ const Product = ({cart}) => {
         return (
           <ProductList
             product={item}
-            caart ={cart}
-            key={item.title}
+            key={item.id}
           />
         );
       })}

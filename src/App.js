@@ -1,23 +1,15 @@
-import { useState } from "react";
 import "./App.css";
-import Product from "./component/product/product";
-import CartContext from "./context/Cartcontext";
+import Products from "./components/products/Products";
+import { CartProvider } from "./context/Cartcontext";
 
 function App() {
-  const [cart,setCart] = useState({title:"rihsi"});
-  console.log(cart);
-  const increaseQuantity = () =>{
-    setCart(cart);
-  }
-  const decreaseQuantity = (props) =>{
-    setCart(props.product);
-  }
+
   return (
-    <CartContext.Provider value={{cart,increaseQuantity,decreaseQuantity}}>
+    <CartProvider>
       <div className="App">
-        <Product />
+        <Products />
       </div>
-    </CartContext.Provider>
+    </CartProvider>
   );
 }
 
